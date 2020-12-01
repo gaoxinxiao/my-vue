@@ -2,7 +2,9 @@
   <div id="app">
     <router-link to="/">home</router-link>&
     <router-link to="/list">list</router-link>
-    <router-view/>
+    <p @click="$store.commit('add')">{{ $store.state.count }}</p>
+    <p @click="$store.dispatch('add')">async:{{ $store.state.count }}</p>
+    <router-view />
   </div>
 </template>
 
