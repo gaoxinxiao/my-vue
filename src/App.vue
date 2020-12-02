@@ -4,7 +4,8 @@
     <router-link to="/list">list</router-link>
     <p @click="$store.commit('add')">{{ $store.state.count }}</p>
     <p @click="$store.dispatch('add')">async:{{ $store.state.count }}</p>
-    <p>getters:{{ $store.getters.getCount }}</p>
+    <p>gettersCount:{{ $store.getters.getCount }}</p>
+    <p>gettersNum:{{ $store.getters.getNum }}</p>
 
     <router-view />
   </div>

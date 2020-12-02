@@ -5,6 +5,7 @@ class Store {
     this.$options = options;
     this._mutations = options.mutations
     this._actions = options.actions
+    this._getters = options.getters
     //通过new Vue实现响应式
     //包装一层防止外部直接修改
     this._vm = new Vue({
@@ -15,6 +16,14 @@ class Store {
     this.state = this._vm._data.$$state;
     this.commit = this.commit.bind(this);
     this.dispatch = this.dispatch.bind(this);
+
+    this.getters = new Proxy({}, {
+      get: (target, key) => {
+        let entry = options.getters[key].bind(this)
+        return entry(this.state)
+      }
+    })
+    
   }
 
   commit(type, payload) {
@@ -33,10 +42,6 @@ class Store {
       return;
     }
     entry(this, payload);
-  }
-
-  getters(){
-    console.log()
   }
 }
 
