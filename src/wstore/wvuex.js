@@ -8,22 +8,38 @@ class Store {
         this._mutations = options.mutations
         this._actions = options.actions
         this._getters = options.getters
+        let computed = {}
+
+        Object.keys(this._getters).forEach(key => {
+            let entry = this._getters[key]
+            computed[key] = () => {
+                return entry(this.state)
+            }
+        })
+
+        this.getters = new Proxy({}, {
+            get: (target, key) => {
+                return this._vm[key]
+            }
+        })
+
         //标明为私有属性
         this._vm = new Vue({
             data() {
                 return {
                     $$state: options.state
                 }
+            },
+            computed:{
+                ...computed,
+                getAA(){
+                    return 1
+                }
             }
         })
+     
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
-        this.getters = new Proxy({}, {
-            get: (target, key) => {
-                let entry = this._getters[key]
-                return entry(this._vm._data.$$state)
-            }
-        })
     }
 
     get state() {
