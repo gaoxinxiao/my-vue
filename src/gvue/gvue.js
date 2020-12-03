@@ -43,7 +43,7 @@ class Observer {
     }
 }
 
-//获取到当前vm的实例把data里面的数据代理到 defineReactitive上
+//将$data的key代理到vm上去，用户可以直接使用
 function proxy(vm) {
     console.log(vm,'vm')
 
