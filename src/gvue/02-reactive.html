@@ -1,0 +1,33 @@
+<div id="app"></div>
+<script>
+
+    function defineReactitive(obj, key, val) {
+        Object.defineProperty(obj, key, {
+            get() {
+                console.log('获取值')
+                return val
+            },
+            set(v) {
+                if (v !== val) {
+                    console.log('设置值', val)
+                    val = v
+                    update()
+                    //最后设置的时候更新组件的update函数
+                }
+            }
+        })
+    }
+    let obj = {}
+    let obj1 = {}
+    defineReactitive(obj, 'foo', '')
+    obj.foo = new Date().toLocaleTimeString()
+
+    function update() {
+        app.innerText = obj.foo
+    }
+
+    setInterval(() => {
+        obj.foo = new Date().toLocaleTimeString()
+    }, 1000)
+    
+</script>
