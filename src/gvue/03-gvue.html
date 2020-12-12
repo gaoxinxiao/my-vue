@@ -1,16 +1,34 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <div id="app">
-    {{counter}}
+    <p>{{counter}}</p>
+    <p g-text='counter'></p>
+    <p g-html='element'></p>
+    <p>{{num}}</p>
+    <p @click="addNum">加</p>
+    <p @click="mineNum">减</p>
+    <p>{{valName}}</p>
+    <input type="text" g-modal='valName'>
 </div>
 <script src='./gvue.js'></script>
 <script>
     const app = new Gvue({
         el: "#app",
         data: {
-            counter: 1
+            counter: 1,
+            num:666,
+            valName:'巴拉巴拉',
+            element:'<p>牛逼<span style="color:red">一个手</span>敲代码</p>'
+        },
+        methods:{
+            addNum(){
+                this.num++
+            },
+            mineNum(){
+                this.num--
+            }
         }
     })
     setInterval(() => {
-        app.counter++
+        //app.counter++
     }, 1000)
 </script>
