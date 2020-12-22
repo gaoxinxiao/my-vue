@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src='./compositionApi.js'></script>
+    <script>
+
+        let data = reactive({
+            name: '张无忌',
+            opt: '九阳神功',
+            wifeList: {
+                name1: "周芷若",
+                name2: "赵敏",
+            }
+        })
+
+        effect(() => {
+            console.log('effect1执行', data.name)
+        })
+
+        effect(() => {
+            console.log('effect2执行')
+        })
+
+        setTimeout(() => {
+            data.name = '张翠山'
+        }, 500)
+
+    </script>
+</body>
+
+</html>
