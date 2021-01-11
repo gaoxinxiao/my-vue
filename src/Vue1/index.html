@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{counter}}</p>
+        <p v-text='counter'></p>
+        <span v-html="desc"></span>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        /**
+         * 初始两个变量 也就是两个dep和这两个变量绑定到一起 通过闭包 之后再变量更新的时候只会更新当前闭包里面的dep
+         * 
+        */
+        let app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                desc: '<h2>我是标题</h2>'
+            }
+        })
+        setInterval(() => {
+            app.counter++
+        }, 1000);
+    </script>
+</body>
+
+</html>
