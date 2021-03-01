@@ -1,5 +1,7 @@
 # my-vue
 
+## 手写vue1.0版本
+
 ## Project setup
 ```
 yarn install
@@ -24,6 +26,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
