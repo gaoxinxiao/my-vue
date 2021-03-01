@@ -1,29 +1,13 @@
-# my-vue
+# Vue相关实现
 
-## Project setup
-```
-yarn install
-```
+## 手写Vue-router实现页面无刷新跳转
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+>src/grouter/gvue-router
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## 手写Vuex基础功能
 
-### Run your tests
-```
-yarn run test
-```
+> src/gstore/gvuex.js
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## 手写Vue1版本实现数据响应式以及动态更新流程
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> src/Vue1
